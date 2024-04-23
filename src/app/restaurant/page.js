@@ -2,11 +2,11 @@
 
 
 import { useState } from "react";
-import RestaurantLogin from "../_components/restaurantLogin.js";
-import RestaurantSignup from "../_components/restaurantSignup.js";
+import RestaurantLogin from "../_components/RestaurantLogin.js";
+import RestaurantSignup from "../_components/RestaurantSignup.js";
 import RestaurantHeader from "../_components/RestaurantHeader.js";
 import "./style.css";
-import RestaurantFooter from "../_components/RestaurantFooter.js";
+import Footer from "../_components/Footer.js";
 
 const Restaurant = () => {
     const [login, setLogin] = useState(true)
@@ -22,7 +22,7 @@ const Restaurant = () => {
                     {login ? "Do not have Account? Signup" : "Already have an Account? Login"}
                 </button>
             </div>
-            <RestaurantFooter/>
+            <Footer/>
         </div>
     )
 }
