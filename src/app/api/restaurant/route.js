@@ -15,8 +15,22 @@ export async function GET() {
 
 export async function POST(request) {
     let palyload = await request.json();
+    console.log(palyload)
+    let result;
+    let success=false
     await mongoose.connect(connectionStr,{useNewUrlParser:true})
-    const restaurant = new restaurantSchema(palyload)
-    const result = await restaurant.save();
-    return NextResponse.json({result, success:true})
+
+    if (palyload.login) {
+        result = await restaurantSchema.findOne({email:palyload.email, password:palyload.password})
+        if (result) {
+            success=true
+        }
+    } else {
+        const restaurant = new restaurantSchema(palyload)
+        result = await restaurant.save();
+        if (result) {
+            success=true
+        }
+    }
+    return NextResponse.json({result, success})
 }

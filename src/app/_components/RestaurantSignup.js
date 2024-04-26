@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const RestaurantSignup = () => {
     const [email, setEmail] = useState('')
+    console.log(email);
     const [password, setPassword] = useState('')
     const [c_password, setC_password] = useState('')
     const [name, setName] = useState('')
@@ -42,7 +43,6 @@ const RestaurantSignup = () => {
             console.log(response);
             const { result } = response
             delete result.password;
-            // localStorage.getItem("restaurantUser", JSON.stringify(result));
             localStorage.setItem('restoUser', JSON.stringify(result))
             router.push("/restaurant/dashboard")
         }
@@ -55,7 +55,7 @@ const RestaurantSignup = () => {
                     <input type="email" placeholder="Enter email id" className="input-field"
                         value={email} onChange={(e) => setEmail(e.target.value)} />
                         {
-                            error && !email && <span className="input_error">password enter valid email</span>
+                            error && !email && <span className="input_error">please enter valid email</span>
                         }
                 </div>
                 <div className="input-wrapper">
