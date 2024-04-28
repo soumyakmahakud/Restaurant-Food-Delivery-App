@@ -1,19 +1,31 @@
-"use client"
-import RestaurantHeader from "@/app/_components/RestaurantHeader";
-// import './../style.css'
-import AddFoodItems from "@/app/_components/AddFoodItem";
+'use client'
 import { useState } from "react";
-import FoodItemList from "@/app/_components/FoodItemList";
-const Dashboard = () => {
-    const [addItem, setAddItem] = useState(false)
-    return (<div>
-        <RestaurantHeader />
-        <button onClick={() => setAddItem(true)}>Add Food </button>
-        <button onClick={() => setAddItem(false)}>Dashboard</button>
-        {
-            addItem ? <AddFoodItems setAddItem={setAddItem} /> : <FoodItemList />
-        }
-    </div>)
+import RestaurantLogin from "../_components/restaurantLogin";
+import RestaurantSignUp from "../_components/restaurantSignup";
+import RestaurantHeader from "../_components/RestaurantHeader";
+import Footer from "../_components/Footer";
+import './style.css'
+
+const Restaurant = () => {
+    const [login, setLogin] = useState(true)
+    return (
+        <>
+        <div className="container">
+            <RestaurantHeader />
+            <h1>Restaurant Login/Signup Page</h1>
+            {
+                login ? <RestaurantLogin /> : <RestaurantSignUp />
+            }
+
+            <div>
+                <button className="button-link" onClick={() => setLogin(!login)}>
+                    {login ? "Do not have account? SignUp" : "Already have Account? Login"}
+                </button>
+            </div>
+            </div>
+            <Footer />
+        </>
+    )
 }
 
-export default Dashboard;
+export default Restaurant;
